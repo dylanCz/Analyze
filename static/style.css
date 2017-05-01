@@ -1,0 +1,76 @@
+body {
+	font-family:Arial, segoe ui, verdana;
+	margin:0;
+	padding:0;
+	color:#fff;
+	background:#fff;
+	font-size:12px;
+}
+
+button {
+	font-size:12px;
+	border-radius:1px;
+	padding:5px 10px;
+	cursor:pointer;
+}
+
+#videoplayer {
+	display:none;
+	position:fixed;
+	left:0px;
+	top:0px;
+
+	z-index:3;
+	border:10px solid #000;
+}
+
+#drawing {
+	position:fixed;
+	left:0px;
+	top:0px;
+	cursor: crosshair;
+	z-index:10;
+}
+
+#control {
+	display:none;
+	position:fixed;
+	bottom:0px;
+	left:0px;
+  cursor:pointer;
+}
+
+i.icon-cyan {
+    color: rgb(0, 180, 212);
+}
+
+#video_url {
+	position:fixed;
+	left:10px;
+	top:10px;
+	left:calc(50% - 250px);
+	top:calc(50% - 40px);
+	text-align:center;
+	width:500px;
+	border-radius:6px;
+	padding:20px 0px;
+
+}
+#checkpointlist {
+	position:fixed;
+	right:0px;
+	top:0px;
+	bottom:0px;
+	overflow:auto;
+}
+
+#checkpointlist .item {
+	cursor:pointer;
+	padding:5px;
+	cursor:pointer;
+	background:#aaa;
+	text-align:center;
+	font-weight:bold;
+	border-radius:2px;
+	margin-bottom:1px;
+}
