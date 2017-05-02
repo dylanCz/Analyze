@@ -3,12 +3,10 @@ var canvas;
 var ctx;
 
 window.onclick = function(){
-
 	document.getElementById('videoplayer').contentDocument.body.focus();
 };
+
 window.onkeydown = keydownCatch;
-
-
 function keydownCatch(e){
 	console.log(e);
 	if(e.keyCode == 37){	// 37 = left
@@ -19,7 +17,6 @@ function keydownCatch(e){
 		simulateKeyEvent(".");
 		e.preventDefault();
 	}
-
 }
 
 function simulateKeyEvent(character) {
@@ -37,7 +34,6 @@ function simulateKeyEvent(character) {
   } else {
     // None of the handlers called preventDefault
     console.log(" None of the handlers called preventDefault");
-
   }
 }
 
@@ -48,14 +44,11 @@ function load(){
 	var wh = ((window && window.innerHeight) ? window.innerHeight : 720);
 	var aspect = 16/9;
 	var controlH = 100;
-
 	var videoH = wh-controlH;
 	var videoW = Math.ceil(videoH*aspect);
-
-	document.getElementById('drawing').style.width = (videoW+20)+"px";
-	document.getElementById('drawing').style.height = (videoH+20)+"px";
+	document.getElementById('drawing').style.width = (videoW)+"px";
+	document.getElementById('drawing').style.height = (videoH)+"px";
 	document.getElementById('checkpointlist').style.width = (ww-videoW-30)+"px";
-
 	document.getElementById('video_url').style.display = "none";
 	document.getElementById('videoplayer').style.display = "block";
 	document.getElementById('control').style.display = "block";
@@ -66,7 +59,7 @@ function load(){
 		videoId: ytid,
 		playerVars: {
 			'autoplay': 0,
-			'controls': 1,
+			'controls': 0,
 			'showinfo': 0,
 			'rel' : 0
 		},
@@ -78,8 +71,8 @@ function load(){
 
 	canvas = document.getElementById("drawing");
 
-	canvas.width = videoW+20;
-	canvas.height = videoH+20;
+	canvas.width = videoW;
+	canvas.height = videoH;
 
 	ctx = canvas.getContext("2d");
 	ctx.fillStyle = "#FF0000";
@@ -89,7 +82,8 @@ function load(){
 	canvas.onmousemove = canvasMouseMove;
 	canvas.onmousedown = function(){
 		canvasDraw = true;
-		pause();
+		player.pauseVideo();
+		document.getElementById('toggle_play').innerHTML = 'play_circle_outline';
 	};
 	canvas.onmouseup = function(){
 		canvasDraw = false;
@@ -150,23 +144,24 @@ function getYtId(url){
 function onYouTubeIframeAPIReady() {
 	document.getElementById('yt-url-btn').disabled = false;
 }
-function play(){
-	player.playVideo();
-}
-function pause(){
-	player.pauseVideo();
-}
-function setVolume(val){
-	player.setVolume(val);
-}
 
 function toggleVolume(){
 	if(player.isMuted()) {
 		player.unMute();
-		document.getElementById('toggle').innerHTML = 'mic';
+		document.getElementById('toggle_volume').innerHTML = 'mic';
 	} else {
 		player.mute();
-		document.getElementById('toggle').innerHTML = 'mic_off';
+		document.getElementById('toggle_volume').innerHTML = 'mic_off';
+	}
+}
+
+function togglePlay(){
+	if(player.getPlayerState() == 1) {
+		player.pauseVideo();
+		document.getElementById('toggle_play').innerHTML = 'play_circle_outline';
+	} else {
+		player.playVideo();
+		document.getElementById('toggle_play').innerHTML = 'pause_circle_outline';
 	}
 }
 
@@ -175,6 +170,12 @@ function prev(sec){
 	current -= parseInt(sec);
 	if(current < 0)
 		current = 0;
+	seek(current);
+}
+
+function next(sec){
+	var current = player.getCurrentTime();
+	current += parseInt(sec);
 	seek(current);
 }
 

@@ -1,45 +1,43 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-
-<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel= "stylesheet" href= "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
-<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
-
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel= "stylesheet" href= "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
 </head>
+
 <body>
 
-<div id="videoplayer"></div>
-<canvas id="drawing"></canvas>
-<div id="control" class="center-align">
+	<div id="video_url">
+		<div class="row center-align">
+			<input type="text" style="width:300px;" id="yt-url-input" value="https://www.youtube.com/watch?v=0CvD-Ph_i4A" placeholder="https://www.youtube.com/watch?v=xxxxxxxxxxx" />
+			<input type="button" id="yt-url-btn" value="Load Youtube Video" onclick="load();" disabled />
+		</div>
+	</div>
 
-	<i onclick="addCheckpoint();" class="material-icons small icon-cyan">mode_edit</i>
+	<div id="videoplayer"></div>
+	<canvas id="drawing"></canvas>
 
-  <i onclick="toggleVolume();" class="material-icons small icon-cyan" id="toggle">mic</i>
+	<div id="control">
+		<div class="row center-align hide-on-med-and-down">
+			<i onclick="addCheckpoint();" class="material-icons small icon-colour">mode_edit</i>
+		  <i onclick="toggleVolume();" class="material-icons small icon-colour" id="toggle_volume">mic</i>
+			<i onclick="prev(10);" class="material-icons medium icon-colour">replay_10</i>
+		  <i onclick="prev(5);" class="material-icons medium icon-colour">replay_5</i>
+		  <i onclick="togglePlay();" class="material-icons medium icon-colour" id="toggle_play">play_circle_outline</i>
+		  <i onclick="next(5);" class="material-icons medium icon-colour">forward_5</i>
+		  <i onclick="next(10);" class="material-icons medium icon-colour">forward_10</i>
+			<i onclick="speed(1);" class="material-icons small icon-colour">directions_bike</i>
+		  <i onclick="speed(0.5);" class="material-icons small icon-colour">directions_run</i>
+		  <i onclick="speed(0.25);" class="material-icons small icon-colour">directions_walk</i>
+		</div>
+	</div>
 
-  <i onclick="prev(5);" class="material-icons medium icon-cyan">replay_5</i>
-	<i onclick="prev(10);" class="material-icons medium icon-cyan">replay_10</i>
 
-  <i onclick="play();" class="material-icons medium icon-cyan">play_circle_outline</i>
-  <i onclick="pause();" class="material-icons medium icon-cyan">pause_circle_outline</i>
-
-  <i onclick="seek(5);" class="material-icons medium icon-cyan">forward_5</i>
-  <i onclick="seek(10);" class="material-icons medium icon-cyan">forward_10</i>
-
-	<i onclick="speed(1);" class="material-icons small icon-cyan">directions_bike</i>
-  <i onclick="speed(0.5);" class="material-icons small icon-cyan">directions_run</i>
-  <i onclick="speed(0.25);" class="material-icons small icon-cyan">directions_walk</i>
-
-</div>
-<div id="video_url">
-	<input type="text" style="width:300px;" id="yt-url-input" value="https://www.youtube.com/watch?v=0CvD-Ph_i4A" placeholder="https://www.youtube.com/watch?v=xxxxxxxxxxx" />
-	<input type="button" id="yt-url-btn" value="Load Youtube Video" onclick="load();" disabled />
-</div>
-
-<div id="checkpointlist"></div>
+	<div id="checkpointlist"></div>
 </body>
 
 <script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
 <script type="text/javascript" src="/static/player.js"></script>
-
 </html>

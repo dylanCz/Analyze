@@ -1,10 +1,6 @@
 body {
-	font-family:Arial, segoe ui, verdana;
-	margin:0;
-	padding:0;
-	color:#fff;
-	background:#fff;
-	font-size:12px;
+	font-family:Futura, Helvetica;
+	font-size:14px;
 }
 
 button {
@@ -17,17 +13,16 @@ button {
 #videoplayer {
 	display:none;
 	position:fixed;
-	left:0px;
 	top:0px;
-
+	left:calc(50% - 456px);
 	z-index:3;
 	border:10px solid #000;
 }
 
 #drawing {
-	position:fixed;
-	left:0px;
+	position:relative;
 	top:0px;
+	left:calc(50% - 683px);
 	cursor: crosshair;
 	z-index:10;
 }
@@ -35,13 +30,13 @@ button {
 #control {
 	display:none;
 	position:fixed;
-	bottom:0px;
-	left:0px;
+	bottom:10px;
+	left:33%;
   cursor:pointer;
 }
 
-i.icon-cyan {
-    color: rgb(0, 180, 212);
+i.icon-colour {
+    color: black;
 }
 
 #video_url {
