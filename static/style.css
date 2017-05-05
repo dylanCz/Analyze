@@ -11,32 +11,28 @@ button {
 }
 
 #videoplayer {
-	display:none;
 	position:fixed;
-	top:0px;
-	left:calc(50% - 456px);
 	z-index:3;
-	border:10px solid #000;
+	/*border:10px solid rgb(0, 240, 255);*/
+	border-radius: 6px;
 }
 
 #drawing {
 	position:relative;
-	top:0px;
-	left:calc(50% - 683px);
 	cursor: crosshair;
+	left: -210px;
 	z-index:10;
+	color: black;
 }
 
 #control {
-	display:none;
 	position:fixed;
 	bottom:10px;
-	left:33%;
   cursor:pointer;
 }
 
 i.icon-colour {
-    color: black;
+  color: black;
 }
 
 #video_url {
@@ -44,12 +40,12 @@ i.icon-colour {
 	left:10px;
 	top:10px;
 	left:calc(50% - 250px);
-	top:calc(50% - 40px);
+	top:calc(50% - 80px);
 	text-align:center;
 	width:500px;
 	border-radius:6px;
 	padding:20px 0px;
-
+	color: black;
 }
 #checkpointlist {
 	position:fixed;
@@ -57,15 +53,29 @@ i.icon-colour {
 	top:0px;
 	bottom:0px;
 	overflow:auto;
+	width: 200px;
+	/*width: (ww - videoW - 30)px;*/
 }
 
 #checkpointlist .item {
-	cursor:pointer;
 	padding:5px;
-	cursor:pointer;
-	background:#aaa;
+	background:rgb(200, 200, 200);
 	text-align:center;
 	font-weight:bold;
 	border-radius:2px;
 	margin-bottom:1px;
+}
+
+#checkpointlist .label {
+	cursor:pointer;
+}
+
+#checkpointlist .note {
+
+}
+
+label:hover {
+    background: #f2f5ff;
+    border-radius:5px;
+    padding:2px 4px;
 }

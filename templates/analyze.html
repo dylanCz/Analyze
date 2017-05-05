@@ -9,31 +9,32 @@
 
 <body>
 
-	<div id="video_url">
-		<div class="row center-align">
+	<div class="container">
+
+		<div id="video_url">
 			<input type="text" style="width:300px;" id="yt-url-input" value="https://www.youtube.com/watch?v=0CvD-Ph_i4A" placeholder="https://www.youtube.com/watch?v=xxxxxxxxxxx" />
 			<input type="button" id="yt-url-btn" value="Load Youtube Video" onclick="load();" disabled />
 		</div>
-	</div>
 
-	<div id="videoplayer"></div>
-	<canvas id="drawing"></canvas>
+		<div id="videoplayer"></div>
+		<canvas id="drawing"></canvas>
 
-	<div id="control">
-		<div class="row center-align hide-on-med-and-down">
-			<i onclick="addCheckpoint();" class="material-icons small icon-colour">mode_edit</i>
-		  <i onclick="toggleVolume();" class="material-icons small icon-colour" id="toggle_volume">mic</i>
-			<i onclick="prev(10);" class="material-icons medium icon-colour">replay_10</i>
-		  <i onclick="prev(5);" class="material-icons medium icon-colour">replay_5</i>
-		  <i onclick="togglePlay();" class="material-icons medium icon-colour" id="toggle_play">play_circle_outline</i>
-		  <i onclick="next(5);" class="material-icons medium icon-colour">forward_5</i>
-		  <i onclick="next(10);" class="material-icons medium icon-colour">forward_10</i>
-			<i onclick="speed(1);" class="material-icons small icon-colour">directions_bike</i>
-		  <i onclick="speed(0.5);" class="material-icons small icon-colour">directions_run</i>
-		  <i onclick="speed(0.25);" class="material-icons small icon-colour">directions_walk</i>
+		<div id="control">
+			<div class="row center-align hide-on-med-and-down">
+				<i onclick="addCheckpoint();" class="material-icons small icon-colour">mode_edit</i>
+				<i onclick="saveNotes();" class="material-icons small icon-colour">get_app</i>
+			  <i onclick="toggleVolume();" class="material-icons small icon-colour" id="toggle_volume">mic</i>
+				<i onclick="prev(10);" class="material-icons medium icon-colour">replay_10</i>
+			  <i onclick="prev(5);" class="material-icons medium icon-colour">replay_5</i>
+			  <i onclick="togglePlay();" class="material-icons medium icon-colour" id="toggle_play">play_circle_outline</i>
+			  <i onclick="next(5);" class="material-icons medium icon-colour">forward_5</i>
+			  <i onclick="next(10);" class="material-icons medium icon-colour">forward_10</i>
+				<i onclick="speed(1);" class="material-icons small icon-colour">directions_bike</i>
+			  <i onclick="speed(0.5);" class="material-icons small icon-colour">directions_run</i>
+			  <i onclick="speed(0.25);" class="material-icons small icon-colour">directions_walk</i>
+			</div>
 		</div>
 	</div>
-
 
 	<div id="checkpointlist"></div>
 </body>
