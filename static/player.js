@@ -47,9 +47,8 @@ function load() {
   var controlH = 100;
   var videoH = wh - controlH;
   var videoW = Math.ceil(videoH * aspect);
-  document.getElementById('drawing').style.width = (videoW) + "px";
-  document.getElementById('drawing').style.height = (videoH) + "px";
   document.getElementById('video_url').style.display = "none";
+  document.getElementById('control').style.visibility = "visible";
 
   player = new YT.Player('videoplayer', {
     width: videoW,
@@ -105,8 +104,6 @@ function canvasMouseMove(evt) {
       ctx.stroke();
       console.log("stroke");
     }
-
-
     lastLoc[0] = x;
     lastLoc[1] = y;
   } else {
@@ -187,10 +184,8 @@ function speed(value) {
 function addCheckpoint() {
   var current = player.getCurrentTime();
   var itemString = convertSecToString(current);
-  var newItem = '<div class="item"> <label onclick="seek(' + parseInt(current) + ')">' + itemString + '</label><input class="note" type="text" /></div>';
-	// var newItem3 = '<input class="item" type="text" />';
+  var newItem = '<div class="item"> <label onclick="seek(' + parseInt(current) + ')">' + itemString + '</label><input class="note" type="text" contenteditable="true"/></div>';
   document.getElementById('checkpointlist').innerHTML += newItem;
-	document.getElementById('checkpointlist').innerHTML += newItem3;
 }
 
 function saveNotes() {
@@ -204,7 +199,6 @@ function saveNotes() {
 
 function convertSecToString(sec) {
   sec = parseInt(sec);
-
   var minutes = Math.floor(sec / 60);
   var seconds = sec % 60;
 
@@ -215,5 +209,4 @@ function convertSecToString(sec) {
     seconds = "0" + seconds;
   }
   return minutes + ':' + seconds;
-
 }
